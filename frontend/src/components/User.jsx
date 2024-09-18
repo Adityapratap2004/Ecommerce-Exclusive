@@ -8,61 +8,86 @@ import {
 
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu";
 
-import { useNavigate } from 'react-router-dom'
-import { LayoutDashboard, User2Icon,LogOut } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom'
+import { LayoutDashboard, User2Icon, LogOut, HomeIcon, ShoppingCart, PhoneCall, Headset, AppWindow } from 'lucide-react';
 import { useDispatch } from 'react-redux';
 import { logoutUser } from '@/store/Slice/userSlice';
-;
+
+
 
 
 const User = ({ user, isAuthenticated }) => {
 
-    const dispatch=useDispatch();
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState(false);
+    
     const handlUser = () => {
         if (!isAuthenticated) {
             navigate("/login");
-        }else{
-        setIsOpen(!isOpen);
+        } else {
+            setIsOpen(!isOpen);
         }
         setIsOpen(!isOpen);
     }
 
-    function Logout (){
+    function Logout() {
         dispatch(logoutUser());
     }
 
-    function DashBoard(){
-        navigate("/dashboard");
+    function DashBoard() {
+        navigate("/admin");
     }
-    function Account(){
+    function Account() {
         navigate("/account");
     }
 
-    const userControls=[
-        
+    const userControls = [
+
+
         {
-            icon:<LayoutDashboard strokeWidth={1.5}/>,
-            fuc:"DashBoard",
-            onClick:DashBoard,
-            link:"/",
+            icon: <User2Icon strokeWidth={1.5} />,
+            fuc: "Account",
+            onClick: Account,
+
         },
         {
-            icon:<User2Icon strokeWidth={1.5}/>,
-            fuc:"Account",
-            onClick:Account,
-            link:"/",
-        },
-        {
-            icon: <LogOut strokeWidth={1.5}/>,
-            fuc:"Logout",
-            onClick:Logout,
-            link:"/",
+            icon: <LogOut strokeWidth={1.5} />,
+            fuc: "Logout",
+            onClick: Logout,
+
         },
     ]
 
+    const nav_link=[
+        {
+            id:1,
+            nav:"Home",
+            link:"/",
+            icon:<HomeIcon strokeWidth={1.5}/>
+        },
+        {
+            id:2,
+            nav:"Products",
+            link:"/products",
+            icon:<ShoppingCart strokeWidth={1.5} />
+        },{
+            id:3,
+            nav:"About",
+            link:"/about",
+            icon:<AppWindow strokeWidth={1.5}/>
+        },
+        {
+            id:4,
+            nav:"Contact Us",
+            link:"/contactus",
+            icon:<Headset strokeWidth={1.5}/>
+        }
+    ]
     
+
+    console.log(user);
+
 
     return (
         <div className=' relative'>
@@ -83,17 +108,23 @@ const User = ({ user, isAuthenticated }) => {
             <div className='absolute'>
                 <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
                     <DropdownMenuTrigger asChild>
-                    <button className='transparent'></button> 
-                </DropdownMenuTrigger>
+                        <button className='transparent'></button>
+                    </DropdownMenuTrigger>
 
                     <DropdownMenuContent>
                         {
-                            userControls.map((controls,idx)=>{
+                            nav_link.map((nav) => {
+                                return <DropdownMenuItem className="block md:hidden" key={nav.id}><Link className=' flex  w-40 gap-4 cursor-pointer'>{nav.icon}<p>{nav.nav}</p></Link></DropdownMenuItem>
+                            })
+                        }
+                        {user && user.role === "admin" && <DropdownMenuItem ><div onClick={DashBoard} className=' flex w-40 gap-4 cursor-pointer'>{<LayoutDashboard strokeWidth={1.5} />}<p>DashBoard</p></div></DropdownMenuItem>}
+                        {
+                            userControls.map((controls, idx) => {
                                 return <DropdownMenuItem key={idx}><div onClick={controls.onClick} className=' flex w-40 gap-4 cursor-pointer'>{controls.icon}<p>{controls.fuc}</p></div></DropdownMenuItem>
                             })
-
                         }
-                        
+
+
                     </DropdownMenuContent>
                 </DropdownMenu>
             </div>

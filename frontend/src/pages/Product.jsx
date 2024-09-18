@@ -46,7 +46,7 @@ const Product = () => {
   }, [dispatch, keyword, currentPage, category, rating]);
 
   useEffect(() => {
-    if (price[0] != 0 && price[1] != 10000) {
+    if (price[0] != 0 || price[1] != 10000) {
       keyword.get('keyword') ? setSubHeading(`Showing search result for ${keyword.get('keyword')}`) : setSubHeading('Products')
       throttledFetchProducts();
     }

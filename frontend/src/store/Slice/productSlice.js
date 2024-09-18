@@ -20,12 +20,12 @@ export const fetchProducts = createAsyncThunk(
             let currentPage=query?.currentPage ?query.currentPage:1;
             let price=query?.price ? query.price:[0,25000];
             let rating=query?.rating ?query.rating:0;
-            
             let link=`${import.meta.env.VITE_BACKEND_URL}/product?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${rating}`;
             if(query?.category){
-                link=`${import.meta.env.VITE_BACKEND_URL}/product?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${rating}`;
+                console.log(query.category);
+                link=`${import.meta.env.VITE_BACKEND_URL}/product?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${query.category}&ratings[gte]=${rating}`;
             }
-           
+            console.log(link);
             const res = await axios.get(link);
             const data = await res.data;
             return data;

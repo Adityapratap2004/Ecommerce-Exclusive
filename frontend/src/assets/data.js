@@ -1,8 +1,10 @@
+
+
 export const nav_link=[
     {
         id:1,
         nav:"Home",
-        link:"/"
+        link:"/",
     },
     {
         id:2,

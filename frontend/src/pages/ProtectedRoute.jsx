@@ -3,16 +3,21 @@ import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 
 
-const ProtectedRoute = ({children}) => {
+const ProtectedRoute = ({children,isAdmin}) => {
     
-    const {isLoading,isAuthenticated}=useSelector(state=>state.user);
+    console.log(isAdmin);
+    const {isLoading,isAuthenticated,user}=useSelector(state=>state.user);
 
    
-    if(isLoading){
+    if(isLoading===true){
         return <Loader/>
     }
 
-    if(!isAuthenticated){
+    if(isAuthenticated===false){
+        return <Navigate to="/"/>
+    }
+
+    if(isAdmin===true && user.role!=='admin'){
         return <Navigate to="/"/>
     }
 

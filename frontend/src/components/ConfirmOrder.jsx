@@ -46,7 +46,7 @@ const ConfirmOrder = () => {
                         <div className='sm:pl-5 pt-4 flex flex-col space-y-3'>
                             {
                                 cart.map((cartItem) => {
-                                    return <Link to={`/product/${cartItem._id}`}>
+                                    return <Link key={cartItem._id} to={`/product/${cartItem._id}`}>
                                         <div className='flex justify-between items-center' key={cartItem._id}>
                                             <div className='flex items-center gap-4'>
                                                 <img src={cartItem.image} alt="product image" className='h-14' />

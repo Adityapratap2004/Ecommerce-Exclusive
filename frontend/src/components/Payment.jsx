@@ -8,6 +8,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { clearError, clearSuccess, createOrder } from '@/store/Slice/orderSlice';
+import { clearCart } from '@/store/Slice/cartSlice';
 
 const Payment = () => {
     const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
@@ -94,6 +95,8 @@ const Payment = () => {
         }
         if(success){
             dispatch(clearSuccess());
+            dispatch(clearCart());
+            sessionStorage.removeItem('orderInfo');
             navigate("/success");
         }
 

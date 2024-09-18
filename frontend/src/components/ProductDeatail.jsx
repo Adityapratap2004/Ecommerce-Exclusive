@@ -123,7 +123,7 @@ const ProductDeatail = () => {
               <Button className="border rounded-none rounded-r-md bg-white text-text2 hover:text-text1 hover:bg-secondary2 text-lg md:text-2xl" onClick={increaseCount}>+</Button>
             </div>
             <Button className="bg-secondary2 hover:bg-secondary3 h-14 text-lg w-auto md:w-40" onClick={() => { handleAddToCart(productDetails) }} disabled={productDetails.stock < 1} >Add to Cart</Button>
-            <Button className="h-14 bg-white hover:bg-white text-text2 border-gray-300 border"><Heart /></Button>
+            {/* <Button className="h-14 bg-white hover:bg-white text-text2 border-gray-300 border"><Heart /></Button> */}
           </div>
           <div className='w-full border-2  rounded-md '>
             <div className='flex items-center border-b p-4 gap-4'>
@@ -151,12 +151,15 @@ const ProductDeatail = () => {
         <SubHeading subHeading="Reviews" />
         <div className='grid gap-3 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
           {
-            productDetails.numOfReviews >= 1 &&
+            productDetails.numOfReviews >= 1 ?
 
             productDetails.reviews.map((review) => {
               return <ReviewCard key={review._id} review={review} />
 
-            })
+            }) :
+            <div>
+                <h3 className='text-lg font-semibold text-center text-text2'>No Reviews yet</h3>
+              </div>
 
           }
         </div>

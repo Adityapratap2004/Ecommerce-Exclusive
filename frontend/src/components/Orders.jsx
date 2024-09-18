@@ -10,6 +10,7 @@ import { ArrowLeft } from 'lucide-react';
 
 const Orders = () => {
     const { orders, isLoading, error } = useSelector(state => state.order);
+    console.log(orders);
     const dispatch = useDispatch();
 
     useEffect(() => {

@@ -36,7 +36,7 @@ const Header = () => {
                         <Search strokeWidth={1.5} className='absolute top-2 right-4 cursor-pointer' onClick={handleSearch} />
                     </div>
                     <div className='flex gap-5 *:cursor-pointer items-center'>
-                        <Heart strokeWidth={1.5} />
+                        {/* <Heart strokeWidth={1.5} /> */}
                         <Link to="/cart"><ShoppingBagIcon strokeWidth={1.5} /></Link>
                         <User user={user} isAuthenticated={isAuthenticated}/>
                     </div>
