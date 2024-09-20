@@ -6,6 +6,7 @@ import { categories } from '@/assets/data'
 import { Link } from 'react-router-dom'
 import { Button } from './ui/button'
 
+
 const Banner = () => {
 
   return (
@@ -33,10 +34,10 @@ const Banner = () => {
 
 
         >
-          <CarouselContent className="flex justify-between" >
-            <CarouselItem ><img src="/Carousel.svg" className='w-full' /></CarouselItem>
-            <CarouselItem><img src="/Carousel.svg" className='w-full' /></CarouselItem>
-            <CarouselItem><img src="/Carousel.svg" className='w-full' /></CarouselItem>
+          <CarouselContent className="flex justify-between " >
+          <CarouselItem ><img src="/Carousel.svg" className='w-full' /></CarouselItem>
+          <CarouselItem ><img src="/Carousel.svg" className='w-full' /></CarouselItem>
+          <CarouselItem ><img src="/Carousel.svg" className='w-full' /></CarouselItem>
           </CarouselContent>
         </Carousel>
       </div>

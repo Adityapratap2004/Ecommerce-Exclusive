@@ -1,23 +1,23 @@
 import Loader from "@/components/Loader";
+
 import { useSelector } from "react-redux";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation, } from "react-router-dom";
 
 
 const ProtectedRoute = ({children,isAdmin}) => {
     
-    console.log(isAdmin);
+    const location=useLocation();
     const {isLoading,isAuthenticated,user}=useSelector(state=>state.user);
 
-   
-    if(isLoading===true){
+    if(isLoading){
         return <Loader/>
     }
 
-    if(isAuthenticated===false){
-        return <Navigate to="/"/>
+    if(!isAuthenticated){
+        return <Navigate to={`/login?redirect=${location.pathname.substring(1)}`}/>
     }
 
-    if(isAdmin===true && user.role!=='admin'){
+    if(isAdmin && user.role!=='admin'){
         return <Navigate to="/"/>
     }
 

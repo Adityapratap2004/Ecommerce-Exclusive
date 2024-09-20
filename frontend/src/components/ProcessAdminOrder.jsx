@@ -15,15 +15,12 @@ const ProcessAdminOrder = () => {
     const address = order.shippingInfo ? `${order.shippingInfo.address}, ${order.shippingInfo.city}, ${order.shippingInfo.state}, ${order.shippingInfo.pinCode}, ${order.shippingInfo.country}` : "N/A";
 
     const [status, setStatus] = useState("");
-    console.log(status);
     const processOrder=(e)=>{
         e.preventDefault();
         const myForm=new FormData();
         myForm.set("status",status);
         dispatch(updateAdminOrder({myForm,id}));
     }
-
-    console.log(order);
     useEffect(() => {
         dispatch(getAdminSingleOrder(id));
     }, [])

@@ -86,7 +86,6 @@ const User = ({ user, isAuthenticated }) => {
     ]
     
 
-    console.log(user);
 
 
     return (
@@ -114,7 +113,7 @@ const User = ({ user, isAuthenticated }) => {
                     <DropdownMenuContent>
                         {
                             nav_link.map((nav) => {
-                                return <DropdownMenuItem className="block md:hidden" key={nav.id}><Link className=' flex  w-40 gap-4 cursor-pointer'>{nav.icon}<p>{nav.nav}</p></Link></DropdownMenuItem>
+                                return <DropdownMenuItem className="block md:hidden" key={nav.id}><Link to={nav.link} className=' flex  w-40 gap-4 cursor-pointer'>{nav.icon}<p>{nav.nav}</p></Link></DropdownMenuItem>
                             })
                         }
                         {user && user.role === "admin" && <DropdownMenuItem ><div onClick={DashBoard} className=' flex w-40 gap-4 cursor-pointer'>{<LayoutDashboard strokeWidth={1.5} />}<p>DashBoard</p></div></DropdownMenuItem>}

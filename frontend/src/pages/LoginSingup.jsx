@@ -5,7 +5,7 @@ import {  LockIcon, MailIcon, User } from 'lucide-react';
 import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 
 const LoginSingup = () => {
 
@@ -18,6 +18,7 @@ const LoginSingup = () => {
 
     const dispatch=useDispatch();
     const navigate=useNavigate();
+    
 
     const [avatar, setAvatar] = useState("/Profile.png");
     const [avatarPreview, setAvatarPreview] = useState("/Profile.png");
@@ -40,7 +41,7 @@ const LoginSingup = () => {
     const handleRegister=(e)=>{
         e.preventDefault();
         const myForm = new FormData();
-        console.log(name,email,password,avatar);
+       
 
         myForm.set("name", name);
         myForm.set("email", email);
@@ -55,7 +56,7 @@ const LoginSingup = () => {
     }
 
     const  [searchParmas,setSearchParmas]=useSearchParams();
-    const redirect=searchParmas.get("redirect")?'/'+searchParmas.get("redirect"):"/";
+    const redirect=searchParmas.get("redirect")?`/${searchParmas.get("redirect")}`:"/";
 
     useEffect(()=>{
         if(error){
@@ -71,8 +72,8 @@ const LoginSingup = () => {
 
     if(isLoading) return <Loader/>
     return (
-        <div className=' bg-slate-100 h-[100vh] w-[100vw] flex items-center justify-center'>
-            <div className=' w-full h-full md:w-[50%] md:h-[85%] lg:w-[30%]  bg-white overflow-hidden relative shadow-lg rounded-md '>
+        <div className='  h-[100vh] w-[100vw] flex items-center justify-center'>
+            <div className=' w-full h-full md:w-[50%] md:h-[85%] lg:w-[30%]  bg-white overflow-hidden relative shadow-all-sides rounded-md '>
                 <div className='flex  *:h-16 '>
                     <button className=' w-full   ' onClick={() => { setPage('login') }}>LOGIN</button>
                     <button className='w-full ' onClick={() => setPage('register')}>REGISTER</button>

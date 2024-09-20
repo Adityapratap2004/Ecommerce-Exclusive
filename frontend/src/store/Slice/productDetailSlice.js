@@ -14,7 +14,7 @@ export const getProductDetails = createAsyncThunk(
     async (id, { rejectWithValue }) => {
         try {
             const {data} = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/product/${id}`);
-            console.log(data);
+          
             return data;
 
         } catch (error) {

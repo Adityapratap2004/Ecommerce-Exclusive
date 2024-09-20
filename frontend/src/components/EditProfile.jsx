@@ -6,6 +6,7 @@ import { clearError, clearIsUpdate, updateUser } from '@/store/Slice/userSlice';
 import Loader from './Loader';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import MetaData from '@/Layout/MetaData';
 
 
 
@@ -67,6 +68,7 @@ const EditProfile = () => {
     return (
         <div className='w-full h-full' >
             <SubHeading subHeading={"Edit Your Profile"} />
+            <MetaData title="Edit Profile"/>
             <div className='flex flex-col sm:flex-row shadow-lg w-full justify-evenly items-center p-5 sm:p-10'>
                 <img src={avatarPreview} className=' rounded-full w-1/4 h-1/3' />
                 <form  onSubmit={handleUpdateProfile} className='flex w-full sm:w-1/2 flex-col gap-y-11'>

@@ -17,7 +17,7 @@ const ProductDeatail = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const { productDetails, isLoading, error, success } = useSelector(state => state.productDetail);
-  
+
 
   const [open, setOpen] = useState(false);
   const [reviewRating, setReviewRating] = useState(5);
@@ -32,10 +32,14 @@ const ProductDeatail = () => {
       productId: id
     }
     dispatch(addReview(r));
-    setComment(""); 
-    setOpen(false); 
+    setComment("");
+    setOpen(false);
   }
 
+  const [mainImage,setMainImage]=useState(null);
+  const handleImageClick=(image)=>{
+    setMainImage(image);
+  }
 
 
   const [count, setCount] = useState(1);
@@ -78,6 +82,13 @@ const ProductDeatail = () => {
     }
   }, [dispatch, error]);
 
+  useEffect(()=>{
+    if(productDetails && productDetails.images && productDetails.images.length>0){
+      setMainImage(productDetails.images[0]);
+    }
+
+  },[productDetails]);
+
 
 
 
@@ -89,19 +100,20 @@ const ProductDeatail = () => {
   return (<>
     <MetaData title={`${productDetails?.name ? productDetails.name : "product details"}`} />
     {productDetails ? <>
-      <div className='flex flex-col md:flex-row w-full my-10 items-center'>
-        <div className='w-full flex flex-col-reverse md:flex-row '>
-          <div className='hidden md:flex md:flex-col justify-center gap-4'>
+      <div className='flex flex-col md:flex-row w-full gap-5 my-10 items-start  '>
+        <div className='w-full flex flex-col-reverse gap-5 lg:flex-row '>
+          <div className='flex lg:flex-col justify-center gap-4'>
             {
-              Array(4).fill().map((_, index) => (
-                <div key={index} className='bg-secondary0 p-4 rounded-md'>
-                  <img src={productDetails?.images[0]?.url} alt="product img" className='w-28' />
+              productDetails.images.map((image, index) => (
+                <div key={index} className='bg-secondary0 p-4 rounded-md cursor-pointer' onClick={()=>{handleImageClick(image)}}>
+                  <img src={image.url} alt="product img side" className='w-28' />
                 </div>
+
               ))
             }
           </div>
-          <div className='w-full md:flex-1 flex items-center justify-center rounded-md bg-secondary0 md:ml-10 md:mr-20 overflow-hidden'>
-            <img src={productDetails?.images[0]?.url} alt="product img" className='w-[100%] md:w-[70%] hover:scale-105 md:hover:scale-125 overflow-hidden duration-150 cursor-pointer' />
+          <div className=' md:h-[80vh] md:flex-1 flex items-center justify-center rounded-md bg-secondary0 lg:ml-10 lg:mr-20 overflow-hidden'>
+            <img src={mainImage?.url} alt="product img" className='w-[90%] p-10 md:w-[70%] hover:scale-105 md:hover:scale-125 overflow-hidden duration-150' />
           </div>
         </div>
         <div className='md:w-[50%] mt-8 md:mt-0 space-y-2'>
@@ -113,7 +125,11 @@ const ProductDeatail = () => {
               In Stock
             </span>
           </div>
-          <h2 className='text-3xl'>${productDetails.price}</h2>
+          {/* <h2 className='text-3xl'>${productDetails.price}</h2> */}
+          <h2 className='text-3xl flex gap-2'>
+          <span className=" text-secondary2 font-semibold ">₹{productDetails.discountPrice ? productDetails.discountPrice : productDetails.price}</span>
+          <span className=" text-text2 font-semibold text-lg line-through">{productDetails.discountPrice && `₹${productDetails.price}`}</span>
+          </h2>
           <p className='py-4 border-b-2'>{productDetails.description} </p>
 
           <div className='py-4 flex gap-4 md:gap-8'>
@@ -153,11 +169,11 @@ const ProductDeatail = () => {
           {
             productDetails.numOfReviews >= 1 ?
 
-            productDetails.reviews.map((review) => {
-              return <ReviewCard key={review._id} review={review} />
+              productDetails.reviews.map((review) => {
+                return <ReviewCard key={review._id} review={review} />
 
-            }) :
-            <div>
+              }) :
+              <div>
                 <h3 className='text-lg font-semibold text-center text-text2'>No Reviews yet</h3>
               </div>
 

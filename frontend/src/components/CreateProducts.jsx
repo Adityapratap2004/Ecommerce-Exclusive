@@ -6,6 +6,7 @@ import { clearSuccess, createProduct } from '@/store/Slice/adminSlice'
 import { categories } from '@/assets/data'
 import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
+import MetaData from '@/Layout/MetaData'
 
 const CreateProducts = () => {
 
@@ -71,6 +72,7 @@ const CreateProducts = () => {
     return (
         <div className='w-full h-full py-4 ' >
             <SubHeading subHeading={"Create Products"} />
+            <MetaData title="Create Products"/>
             <form onSubmit={handleCreateProduct} className='flex flex-col sm:flex-row shadow-all-sides rounded-md w-full justify-evenly items-center p-5 sm:p-10'>
                 <div className='w-full sm:w-1/2'>
                 {

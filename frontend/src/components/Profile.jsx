@@ -1,6 +1,7 @@
 import React from 'react'
 import SubHeading from './SubHeading'
 import { useSelector } from 'react-redux'
+import MetaData from '@/Layout/MetaData';
 
 
 
@@ -11,6 +12,7 @@ const Profile = () => {
     return (
         <div className='w-full h-full' >
             <SubHeading subHeading={"Your Profile"} />
+            <MetaData title="Profile"/>
             <div className='flex flex-col sm:flex-row shadow-lg w-full justify-evenly items-center p-5 sm:p-10'>
                 <img src={user.avatar.url} className=' rounded-full w-1/4 h-1/3' />
                 <form className='flex w-full sm:w-1/2 flex-col gap-y-11'>

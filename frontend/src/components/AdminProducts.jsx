@@ -7,6 +7,7 @@ import SubHeading from './SubHeading';
 import { ArrowLeft, Delete, Edit, Trash2 } from 'lucide-react';
 import Loader from './Loader';
 import toast from 'react-hot-toast';
+import MetaData from '@/Layout/MetaData';
 
 const AdminProducts = () => {
     
@@ -45,6 +46,7 @@ const AdminProducts = () => {
     if(isLoading) return <Loader/>    
     return (
         <div className='py-4 text-text2 min-h-[90vh] h-full '>
+            <MetaData title="Product List"/>
             {products && products.length === 0 ?
                 <div className=' flex flex-col w-full h-[80vh] justify-center items-center'>
                     <h1 className='text-6xl font-bold mb-5 text-center'>You have not created a Product yet</h1>

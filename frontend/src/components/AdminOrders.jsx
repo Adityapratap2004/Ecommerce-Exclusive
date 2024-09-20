@@ -7,6 +7,7 @@ import { Button } from './ui/button';
 import { Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Edit, Trash2 } from 'lucide-react';
 import { clearError, deleteAdminOrders, getAdminOrders } from '@/store/Slice/adminSlice';
+import MetaData from '@/Layout/MetaData';
 
 const AdminOrders = () => {
     const { orders, isLoading, error } = useSelector(state => state.admin);
@@ -34,6 +35,7 @@ const AdminOrders = () => {
 
     return (
         <div className='py-4 text-text2 min-h-[90vh] h-full '>
+            <MetaData title="Your Orders"/>
             {orders && orders.length === 0 ?
                 <div className=' flex flex-col w-full h-[80vh] justify-center items-center'>
                     <h1 className='text-6xl font-bold mb-5 text-center'>No orders</h1>

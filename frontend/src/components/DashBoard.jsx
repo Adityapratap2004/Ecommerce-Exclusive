@@ -56,7 +56,7 @@ const DashBoard = () => {
       const { data } = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/admin/monthlyrevenue`, {
         withCredentials: true
       })
-      console.log(data.monthlySales);
+     
 
       const fsalesData = data.monthlySales.map((data) => ({
         month: monthNames[data.month - 1], // Convert month number to name
@@ -121,7 +121,7 @@ const DashBoard = () => {
   }, []);
   return (
     <div className='w-full h-full mt-4'>
-      <MetaData title="confirm order" />
+      <MetaData title="Dashboard" />
       <SubHeading subHeading={"DashBoard"} />
       <div className='flex flex-col my-7 w-full gap-6 text-text2'>
         <div className=' grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4'>

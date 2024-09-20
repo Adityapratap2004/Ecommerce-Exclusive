@@ -1,18 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// Helper function to safely parse localStorage data
-const loadStateFromLocalStorage = () => {
-  try {
-    const cartData = localStorage.getItem("cartItems");
-    return cartData ? { cartItems: JSON.parse(cartData) } : { cartItems: [] };
-  } catch (error) {
-    console.error("Error parsing localStorage data:", error);
-    return { cartItems: [] }; // Fallback to default state if parsing fails
-  }
-};
 
-// Initialize the state from localStorage or set an empty array if it doesn't exist
-// const initialState = loadStateFromLocalStorage();
 
 const initialState={
   cartItems:localStorage.getItem("cartItems")?JSON.parse(localStorage.getItem("cartItems")):[],

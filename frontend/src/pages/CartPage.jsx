@@ -1,5 +1,6 @@
 import SubHeading from '@/components/SubHeading'
 import { Button } from '@/components/ui/button';
+import MetaData from '@/Layout/MetaData';
 import { addItemsToCart, removeCartItem } from '@/store/Slice/cartSlice';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import React from 'react'
@@ -33,9 +34,10 @@ const CartPage = () => {
 
     return (
         <div className='py-10 text-text2 min-h-[90vh] '>
+            <MetaData title="Cart"/>
             {cart.length === 0 ?
                 <div className=' flex flex-col w-full h-[80vh] justify-center items-center'>
-                    <h1 className='text-6xl font-bold mb-5'>No Items in The Cart</h1>
+                    <h1 className='text-6xl font-bold mb-5 text-center'>No Items in The Cart</h1>
                     <Link to="/products"><Button className="bg-secondary2 text-white hover:bg-secondary3"><ArrowLeft className='mr-3' />  Back to Products</Button></Link>
                 </div> : <> <SubHeading subHeading={"Cart"} />
                     <div className='grid grid-cols-4 sm:grid-cols-5 w-full p-4 shadow-all-sides rounded-md mb-6'>

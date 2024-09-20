@@ -2,7 +2,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
 import AppLayout from './Layout/AppLayout'
-import LadingPage from './pages/LadingPage'
+import LandingPage from './pages/LandingPage'
 import { Toaster } from 'react-hot-toast'
 import ProductDeatail from './components/ProductDeatail'
 import Product from './pages/Product'
@@ -35,6 +35,9 @@ import CreateProducts from './components/CreateProducts'
 import UpdateProducts from './components/UpdateProducts'
 import AdminOrders from './components/AdminOrders'
 import ProcessAdminOrder from './components/ProcessAdminOrder'
+import About from './pages/About'
+import ContactUs from './pages/ContactUs'
+import Page404 from './components/Page404'
 
 function App() {
 
@@ -56,9 +59,11 @@ function App() {
       <Toaster />
       <Routes>
         <Route path='/' element={<AppLayout />}>
-          <Route index element={<LadingPage />} />
+          <Route index element={<LandingPage />} />
           <Route path="/product/:id" element={<ProductDeatail />} />
           <Route path="/products" element={<Product />} />
+          <Route path="/about" element={<About/>}/>
+          <Route path="/contactus" element={<ContactUs/>}/>
           <Route path="/cart" element={<ProtectedRoute><CartPage /></ProtectedRoute>} />
           <Route path="/order/confirm" element={<ProtectedRoute><ConfirmOrder /></ProtectedRoute>} />
           {stripeApiKey && <Route path="/process/payment" element={<ProtectedRoute><Elements stripe={loadStripe(stripeApiKey)} ><Payment /></Elements></ProtectedRoute>} />}
@@ -84,6 +89,7 @@ function App() {
         <Route path="/login" element={<LoginSingup />} />
         <Route path="/password/forgot" element={<ForgotPassword />} />
         <Route path="/password/reset/:token" element={<ResetPassword />} />
+        <Route path="*" element={<Page404/>}/>
       </Routes>
 
     </BrowserRouter>

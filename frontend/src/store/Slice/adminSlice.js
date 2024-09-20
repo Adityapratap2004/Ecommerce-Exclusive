@@ -181,7 +181,7 @@ export const deleteAdminOrders = createAsyncThunk('order/deleteAdminOrders',
 export const updateAdminOrder = createAsyncThunk('order/updateAdminOrder',
     async (order, { rejectWithValue }) => {
         try {
-            console.log(order);
+         
             const { data } = await axios.put(`${import.meta.env.VITE_BACKEND_URL}/admin/order/${order.id}`,
                 order.myForm,
                 {withCredentials:true},

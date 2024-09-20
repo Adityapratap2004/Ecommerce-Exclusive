@@ -25,8 +25,6 @@ const UpdateProducts = () => {
     const [imagesPreview, setImagesPreview] = useState([]);
     const [oldImages, setOldImages] = useState([]);
 
-    console.log(images);
-
     const handleUpdateProduct = (e) => {
         e.preventDefault();
 

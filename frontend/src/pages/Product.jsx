@@ -30,7 +30,7 @@ const Product = () => {
   const handleSlider = (value) => {
     setPrice(value)
   }
-  console.log(filteredProductsCount);
+ 
   // Throttled fetchProducts function
   const throttledFetchProducts = useThrottle(() => {
     dispatch(fetchProducts({ keyword, currentPage, rating, category, price }));
@@ -75,7 +75,7 @@ const Product = () => {
 
   return (
     <>
-      <MetaData title="products" />
+      <MetaData title="Products" />
       <div className='flex gap-8'>
         <div className='py-4 space-y-2 pr-4 sm:w-1/3 md:w-1/4 lg:w-1/6 border-r-2 hidden sm:block'>
           <h3 className='text-lg'>Categories</h3>
@@ -97,7 +97,7 @@ const Product = () => {
         </div>
 
 
-        <div className='py-4 items-center w-full'>
+        <div className='py-4 items-center min-h-[90vh] w-full'>
           <SubHeading subHeading={subHeading} />
           <div className='my-4 gap-x-4 gap-y-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
             {

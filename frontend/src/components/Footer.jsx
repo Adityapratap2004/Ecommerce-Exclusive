@@ -7,7 +7,7 @@ const { support, account, Quick_Link } = footer_link;
 const Footer = () => {
   return (
     <footer className='bg-black' >
-      <div className='container flex justify-between flex-wrap gap-y-4  py-6 text-text1 text-sm'>
+      <div className='container text-center sm:text-start flex justify-between flex-wrap gap-y-4  py-6 text-text1 text-sm'>
 
         <Footer_Column heading="Support" list={support} />
         <Footer_Column heading="Account" list={account} />

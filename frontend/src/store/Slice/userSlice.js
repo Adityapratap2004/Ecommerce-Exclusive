@@ -123,7 +123,6 @@ export const logoutUser = createAsyncThunk('user/logoutUser',
                 {withCredentials:true}
             );
             const data = res.data;
-            console.log(data);
             return data;
 
         } catch (error) {

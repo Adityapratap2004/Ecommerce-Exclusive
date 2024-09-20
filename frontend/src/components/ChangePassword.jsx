@@ -5,6 +5,7 @@ import { Button } from './ui/button';
 import { changePassword, clearError, clearIsUpdate } from '@/store/Slice/userSlice';
 import toast from 'react-hot-toast';
 import Loader from './Loader';
+import MetaData from '@/Layout/MetaData';
 
 
 
@@ -41,6 +42,7 @@ const ChangePassword = () => {
     }
     return (
         <div className='w-full h-full' >
+            <MetaData title="Change Password"/>
             <SubHeading subHeading={"Change Password"} />
             <div className='flex flex-col sm:flex-row shadow-lg w-full justify-evenly items-center p-5 sm:p-10'>
                

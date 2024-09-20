@@ -24,7 +24,6 @@ const Payment = () => {
     const cartItems = useSelector(state => state.cart.cartItems)
     const navigate = useNavigate();
     const ref = useRef(null);
-    console.log(shippingInfo);
     const order={
         shippingInfo,
         orderItems:cartItems,
@@ -97,13 +96,15 @@ const Payment = () => {
             dispatch(clearSuccess());
             dispatch(clearCart());
             sessionStorage.removeItem('orderInfo');
+            localStorage.removeItem('cartItems');
+            // localStorage.removeItem('shippingInfo');
             navigate("/success");
         }
 
     },[error,success]);
 
     return (
-        <div>
+        <div className='my-5'>
             <MetaData title="Payment" />
             <SubHeading subHeading={"Payment"} />
             <div className='flex flex-col my-7 sm:flex-row shadow-all-sides rounded-md w-full justify-evenly items-center p-5 sm:p-10'>

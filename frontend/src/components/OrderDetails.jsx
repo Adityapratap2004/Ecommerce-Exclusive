@@ -27,7 +27,8 @@ const OrderDetails = () => {
 
     if(isLoading) return <Loader/>
   return (
-    <div className='w-full h-full mt-5'>
+   
+   <div className='w-full h-full mt-5'>
             <MetaData title={`Order #${id}`} />
             <SubHeading subHeading={`Order #${id}`} />
             <div className='flex flex-col md:flex-row my-7 w-full gap-6 text-text2'>
@@ -35,8 +36,8 @@ const OrderDetails = () => {
                     <div>
                         <h1 className='text-xl font-semibold '>Shipping Details</h1>
                         <div className='sm:pl-5 pt-4'>
-                            <p>Name: {order.user?.name}</p>
-                            <p>Phone No: {order.shippingInfo?.phoneNo}</p>
+                            <p>Name: {order?.user?.name}</p>
+                            <p>Phone No: {order?.shippingInfo?.phoneNo}</p>
                             <p>Address: {address} </p>
                         </div>
                     </div>
@@ -66,7 +67,7 @@ const OrderDetails = () => {
 
                     <div className=' pt-4 py-5 border-t-2 border-b-2 mt-10'>
                         <div className='flex justify-between'>
-                            <span>Payment Status</span> <span className=' capitalize'>{order?.paymentInfo.status}</span>
+                            <span>Payment Status</span> <span className=' capitalize'>{order?.paymentInfo?.status}</span>
                         </div>
                         <div className='flex justify-between'>
                             <span>Order Status</span> <span>{order?.orderStatus}</span>

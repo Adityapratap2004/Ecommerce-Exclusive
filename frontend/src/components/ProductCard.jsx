@@ -4,7 +4,6 @@ import ReactStars from "react-stars"
 
 
 const ProductCard = ({ product }) => {
-    console.log(product);
     return (
         <Link to={`/product/${product._id}`}>
             <div className=" space-y-4 w-full">
@@ -18,7 +17,7 @@ const ProductCard = ({ product }) => {
                     <h1 className="font-semibold">{product.name}</h1>
                     <div className="flex gap-2">
                         <span className=" text-secondary2 font-semibold text-lg">₹{product.discountPrice ? product.discountPrice : product.price}</span>
-                        <span className=" text-text2 font-semibold text-lg">{product.discountPrice && `₹${product.price}`}</span>
+                        <span className=" text-text2 font-semibold text-lg line-through">{product.discountPrice && `₹${product.price}`}</span>
                     </div>
 
                     <div className="flex items-center gap-2 -mt-1">

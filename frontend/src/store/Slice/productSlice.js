@@ -22,17 +22,15 @@ export const fetchProducts = createAsyncThunk(
             let rating=query?.rating ?query.rating:0;
             let link=`${import.meta.env.VITE_BACKEND_URL}/product?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${rating}`;
             if(query?.category){
-                console.log(query.category);
                 link=`${import.meta.env.VITE_BACKEND_URL}/product?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${query.category}&ratings[gte]=${rating}`;
             }
-            console.log(link);
-            const res = await axios.get(link);
-            const data = await res.data;
+            const {data} = await axios.get(link);
+          
             return data;
 
         } 
         catch (error) {
-            console.log(error);
+           
             if (error.response) {
                 return rejectWithValue(error.response.data)
             }
