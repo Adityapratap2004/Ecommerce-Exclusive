@@ -38,7 +38,7 @@ const Payment = () => {
         ref.current.disabled = true
 
         try {
-            const { data } = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/payment/process`,
+            const { data } = await axios.post(`/api/v1/payment/process`,
                 paymentData,
                 { withCredentials: true }
             )

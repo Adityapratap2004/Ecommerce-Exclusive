@@ -19,7 +19,7 @@ const initialState = {
 export const getAllAdminProducts = createAsyncThunk('admin/getAllAdminProducts',
     async (_, { rejectWithValue }) => {
         try {
-            const { data } =await axios.get(`${import.meta.env.VITE_BACKEND_URL}/admin/products`, {
+            const { data } =await axios.get(`/api/v1/admin/products`, {
                 withCredentials: true
             })
             return data;
@@ -40,7 +40,7 @@ export const getAllAdminProducts = createAsyncThunk('admin/getAllAdminProducts',
 export const createProduct = createAsyncThunk('admin/createProduct',
     async (product, { rejectWithValue }) => {
         try {
-            const { data } =await axios.post(`${import.meta.env.VITE_BACKEND_URL}/admin/product/new`,
+            const { data } =await axios.post(`/api/v1/admin/product/new`,
                 product,
                 {withCredentials: true}
         )
@@ -62,7 +62,7 @@ export const createProduct = createAsyncThunk('admin/createProduct',
 export const deleteProduct = createAsyncThunk('admin/deleteProduct',
     async (id, { rejectWithValue }) => {
         try {
-            const { data } =await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/admin/product/${id}`, {
+            const { data } =await axios.delete(`/api/v1/admin/product/${id}`, {
                 withCredentials: true
             })
             data.id=id;
@@ -84,7 +84,7 @@ export const deleteProduct = createAsyncThunk('admin/deleteProduct',
 export const updateProduct = createAsyncThunk('admin/updateProduct',
     async (product, { rejectWithValue }) => {
         try {
-            const { data } =await axios.put(`${import.meta.env.VITE_BACKEND_URL}/admin/product/${product.id}`, 
+            const { data } =await axios.put(`/api/v1/admin/product/${product.id}`, 
                 product.myForm,
                 {
                     withCredentials: true
@@ -108,7 +108,7 @@ export const updateProduct = createAsyncThunk('admin/updateProduct',
 export const getAdminOrders = createAsyncThunk('order/getAdminOrders',
     async (_, { rejectWithValue }) => {
         try {
-            const { data } = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/admin/orders`,
+            const { data } = await axios.get(`/api/v1/admin/orders`,
                 {withCredentials:true}
             )
             return data;
@@ -132,7 +132,7 @@ export const getAdminOrders = createAsyncThunk('order/getAdminOrders',
 export const getAdminSingleOrder = createAsyncThunk('order/getSingleOrder',
     async (id, { rejectWithValue }) => {
         try {
-            const { data } = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/order/${id}`,
+            const { data } = await axios.get(`/api/v1/order/${id}`,
                 {withCredentials:true}
             )
             return data;
@@ -156,7 +156,7 @@ export const getAdminSingleOrder = createAsyncThunk('order/getSingleOrder',
 export const deleteAdminOrders = createAsyncThunk('order/deleteAdminOrders',
     async (id, { rejectWithValue }) => {
         try {
-            const { data } = await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/admin/order/${id}`,
+            const { data } = await axios.delete(`/api/v1/admin/order/${id}`,
                 {withCredentials:true}
             )
             data._id=id;
@@ -182,7 +182,7 @@ export const updateAdminOrder = createAsyncThunk('order/updateAdminOrder',
     async (order, { rejectWithValue }) => {
         try {
          
-            const { data } = await axios.put(`${import.meta.env.VITE_BACKEND_URL}/admin/order/${order.id}`,
+            const { data } = await axios.put(`/api/v1/admin/order/${order.id}`,
                 order.myForm,
                 {withCredentials:true},
             )

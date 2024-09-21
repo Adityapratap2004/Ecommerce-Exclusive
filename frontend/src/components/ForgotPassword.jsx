@@ -36,7 +36,7 @@ const ForgotPassword = () => {
         <div className='w-full h-[100vh] flex justify-center items-center' >
             <div className='w-[80%]  '>
 
-                <div className=' flex flex-col shadow-lg w-full justify-evenly items-center p-5 sm:p-10'>
+                <div className=' flex flex-col shadow-all-sides w-full justify-evenly items-center p-5 sm:p-10'>
                     <h3 className='text-xl py-8'>Forgot password</h3>
                     <form onSubmit={handleForgotEmail} className='flex w-full sm:w-1/2 flex-col gap-y-11'>
                         <div className='flex flex-col'>

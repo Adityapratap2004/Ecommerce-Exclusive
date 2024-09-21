@@ -16,7 +16,7 @@ export const loginUser = createAsyncThunk('user/loginUser',
         try {
 
             const { loginEmail: email, loginPassword: password } = userData;
-            const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/login`,
+            const res = await axios.post(`/api/v1/login`,
                 { email, password },
                 {withCredentials:true});
             const data = res.data;
@@ -41,7 +41,7 @@ export const loginUser = createAsyncThunk('user/loginUser',
 export const registerUser = createAsyncThunk('user/registerUser',
     async (userData, { rejectWithValue }) => {
         try {
-            const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/register`,
+            const res = await axios.post(`/api/v1/register`,
                 userData,
                 {withCredentials:true}
             );
@@ -68,7 +68,7 @@ export const loadUser = createAsyncThunk('user/loadUser',
     async (_,{ rejectWithValue }) => {
         try {
             
-            const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/me`,
+            const res = await axios.get(`/api/v1/me`,
                 {withCredentials:true}
             );
             const data = res.data;
@@ -93,7 +93,7 @@ export const updateUser = createAsyncThunk('user/updateUser',
     async (userData, { rejectWithValue }) => {
         try {
            
-            const res = await axios.put(`${import.meta.env.VITE_BACKEND_URL}/me/update`,
+            const res = await axios.put(`/api/v1/me/update`,
                 userData,
                 {withCredentials:true}
             );
@@ -119,7 +119,7 @@ export const updateUser = createAsyncThunk('user/updateUser',
 export const logoutUser = createAsyncThunk('user/logoutUser',
     async (_,{ rejectWithValue }) => {
         try {
-            const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/logout`,
+            const res = await axios.post(`/api/v1/logout`,
                 {withCredentials:true}
             );
             const data = res.data;
@@ -144,7 +144,7 @@ export const changePassword = createAsyncThunk('user/changePassword',
     async (userPassword,{ rejectWithValue }) => {
         try {
             
-            const res = await axios.put(`${import.meta.env.VITE_BACKEND_URL}/password/update`,
+            const res = await axios.put(`/api/v1/password/update`,
                 userPassword,
                 {withCredentials:true}
             );
@@ -170,7 +170,7 @@ export const passwordRestLink = createAsyncThunk('user/passwordRestLink',
     async (email,{ rejectWithValue }) => {
         try {
             
-            const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/password/forgot`,
+            const res = await axios.post(`/api/v1/password/forgot`,
                 {email},
             );
             const data = res.data;
@@ -195,7 +195,7 @@ export const resetPassword = createAsyncThunk('user/resetPassword',
     async (userData,{ rejectWithValue }) => {
         try {
             
-            const res = await axios.put(`${import.meta.env.VITE_BACKEND_URL}/password/reset/${userData.token}`,
+            const res = await axios.put(`/api/v1/password/reset/${userData.token}`,
                 {
                     password:userData.password,
                     confirmPassword:userData.confirmPassword,             

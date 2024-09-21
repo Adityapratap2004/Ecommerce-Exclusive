@@ -24,7 +24,7 @@ const Product = () => {
   const [subHeading, setSubHeading] = useState("Products")
   const [currentPage, setCurrentPage] = useState(1);
   const [category, setCategory] = useState(keyword.get('category'));
-  const [price, setPrice] = useState([0, 10000]);
+  const [price, setPrice] = useState([0, 25000]);
   const [rating, setRating] = useState(0);
 
   const handleSlider = (value) => {
@@ -46,7 +46,7 @@ const Product = () => {
   }, [dispatch, keyword, currentPage, category, rating]);
 
   useEffect(() => {
-    if (price[0] != 0 || price[1] != 10000) {
+    if (price[0] != 0 || price[1] != 25000) {
       keyword.get('keyword') ? setSubHeading(`Showing search result for ${keyword.get('keyword')}`) : setSubHeading('Products')
       throttledFetchProducts();
     }

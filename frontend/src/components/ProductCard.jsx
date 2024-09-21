@@ -7,8 +7,8 @@ const ProductCard = ({ product }) => {
     return (
         <Link to={`/product/${product._id}`}>
             <div className=" space-y-4 w-full">
-                <div className=" relative bg-secondary0 w-full rounded-md flex items-center justify-center p-10">
-                    <img src={product?.images[0]?.url} className="" />
+                <div className=" relative bg-secondary0 w-full rounded-md flex items-center justify-center p-10 max-h-[250px] overflow-hidden">
+                    <img src={product?.images[0]?.url} className=" mix-blend-multiply " />
                     {product.discout > 0 && <div className=" absolute left-4 top-4 rounded-md bg-secondary2 text-white px-4 py-1 text-sm">
                         {product.discout}%
                     </div>}

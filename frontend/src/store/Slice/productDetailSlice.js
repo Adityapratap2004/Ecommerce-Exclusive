@@ -13,7 +13,7 @@ export const getProductDetails = createAsyncThunk(
     'productDetails/getProductDetails',
     async (id, { rejectWithValue }) => {
         try {
-            const {data} = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/product/${id}`);
+            const {data} = await axios.get(`/api/v1/product/${id}`);
           
             return data;
 
@@ -35,7 +35,7 @@ export const getProductDetails = createAsyncThunk(
 export const addReview = createAsyncThunk('productDetails/addReview',
     async (review, { rejectWithValue }) => {
         try {
-            const { data } = await axios.put(`${import.meta.env.VITE_BACKEND_URL}/review`,
+            const { data } = await axios.put(`/api/v1/review`,
                 review,
                 {withCredentials:true}
             )
