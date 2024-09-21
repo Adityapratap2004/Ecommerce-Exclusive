@@ -25,7 +25,6 @@ import Payment from './components/Payment'
 import { Elements } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
 import axios from 'axios'
-import Success from './components/success'
 import Orders from './components/Orders'
 import OrderDetails from './components/OrderDetails'
 import Admin from './pages/Admin'
@@ -38,12 +37,13 @@ import ProcessAdminOrder from './components/ProcessAdminOrder'
 import About from './pages/About'
 import ContactUs from './pages/ContactUs'
 import Page404 from './components/Page404'
+import Success from './components/Success'
 
 function App() {
 
   const [stripeApiKey, setStripeApiKey] = useState("");
   const getStripeApiKey = async () => {
-    const { data } = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/stripeapikey`, { withCredentials: true });
+    const { data } = await axios.get(`/api/v1/stripeapikey`, { withCredentials: true });
     setStripeApiKey(data.stripeApikey);
   }
 

@@ -53,7 +53,7 @@ const DashBoard = () => {
 
   const getMontlyRevenue = async () => {
     try {
-      const { data } = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/admin/monthlyrevenue`, {
+      const { data } = await axios.get(`/api/v1/admin/monthlyrevenue`, {
         withCredentials: true
       })
      
@@ -71,7 +71,7 @@ const DashBoard = () => {
 
   const getMonthlySales = async () => {
     try {
-      const { data } = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/admin/monthlysales`, {
+      const { data } = await axios.get(`/api/v1/admin/monthlysales`, {
         withCredentials: true
       })
       setRevenue(data.currentMonthSales.totalSalesValue);
@@ -86,7 +86,7 @@ const DashBoard = () => {
 
   const getMonthlyUser = async () => {
     try {
-      const { data } = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/admin/getCurrentMonthUser`, {
+      const { data } = await axios.get(`/api/v1/admin/getCurrentMonthUser`, {
         withCredentials: true
       })
       setuserNumbers(data.currentMonthUsers.newUsers);
@@ -99,7 +99,7 @@ const DashBoard = () => {
 
   const getRecentOrderes = async () => {
     try {
-      const { data } = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/admin/recentOrders`, {
+      const { data } = await axios.get(`/api/v1/admin/recentOrders`, {
         withCredentials: true
       })
       setRecentOrder(data.recentOrders);

@@ -65,7 +65,7 @@ exports.logout = catchAsyncErrors(async (req, res) => {
     const options = {
         expires: new Date(Date.now()),
         httpOnly: true,
-        sameSite: 'none',
+        sameSite: 'Strict',
         secure: true,
 
     }
@@ -89,7 +89,8 @@ exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
 
     const resetToken = user.getResetPasswordToken();
     await user.save({ validateBeforeSave: false });
-    const resetPasswordUrl = `${process.env.FRONT_END_URL}/password/reset/${resetToken}`
+    // const resetPasswordUrl = `${process.env.FRONT_END_URL}/password/reset/${resetToken}`
+    const resetPasswordUrl=`${req.protocol}://${req.get("host")}/password/reset/${resetToken}`;
     const message = `Your password reset token is as follows:\n\n${resetPasswordUrl}\n\nIf you have not requested this email, then ignore it.`
 
     try {

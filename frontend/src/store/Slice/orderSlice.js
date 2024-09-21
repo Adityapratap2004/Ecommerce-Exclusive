@@ -12,7 +12,7 @@ const initialState = {
 export const createOrder = createAsyncThunk('order/createOrder',
     async (order, { rejectWithValue }) => {
         try {
-            const { data } = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/order/new`,
+            const { data } = await axios.post(`/api/v1/order/new`,
                 order,
                 {withCredentials:true}
             )
@@ -37,7 +37,7 @@ export const createOrder = createAsyncThunk('order/createOrder',
 export const getOrders = createAsyncThunk('order/getOrders',
     async (_, { rejectWithValue }) => {
         try {
-            const { data } = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/orders/me`,
+            const { data } = await axios.get(`/api/v1/orders/me`,
                 {withCredentials:true}
             )
             return data;
@@ -61,7 +61,7 @@ export const getOrders = createAsyncThunk('order/getOrders',
 export const getSingleOrder = createAsyncThunk('order/getSingleOrder',
     async (id, { rejectWithValue }) => {
         try {
-            const { data } = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/order/${id}`,
+            const { data } = await axios.get(`/api/v1/order/${id}`,
                 {withCredentials:true}
             )
             return data;

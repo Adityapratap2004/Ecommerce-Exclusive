@@ -105,15 +105,15 @@ const ProductDeatail = () => {
           <div className='flex lg:flex-col justify-center gap-4'>
             {
               productDetails.images.map((image, index) => (
-                <div key={index} className='bg-secondary0 p-4 rounded-md cursor-pointer' onClick={()=>{handleImageClick(image)}}>
-                  <img src={image.url} alt="product img side" className='w-28' />
+                <div key={index} className={` ${image===mainImage?'hidden':''} bg-secondary0 p-4 rounded-md cursor-pointer`} onClick={()=>{handleImageClick(image)}}>
+                  <img src={image.url} alt="product img side" className='w-28 mix-blend-multiply' />
                 </div>
 
               ))
             }
           </div>
           <div className=' md:h-[80vh] md:flex-1 flex items-center justify-center rounded-md bg-secondary0 lg:ml-10 lg:mr-20 overflow-hidden'>
-            <img src={mainImage?.url} alt="product img" className='w-[90%] p-10 md:w-[70%] hover:scale-105 md:hover:scale-125 overflow-hidden duration-150' />
+            <img src={mainImage?.url} alt="product img" className='w-[90%] p-10 md:w-[70%] hover:scale-105 md:hover:scale-125 overflow-hidden duration-150 mix-blend-multiply' />
           </div>
         </div>
         <div className='md:w-[50%] mt-8 md:mt-0 space-y-2'>
