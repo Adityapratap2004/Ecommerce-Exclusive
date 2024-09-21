@@ -44,7 +44,7 @@ const ChangePassword = () => {
         <div className='w-full h-full' >
             <MetaData title="Change Password"/>
             <SubHeading subHeading={"Change Password"} />
-            <div className='flex flex-col sm:flex-row shadow-all-sides w-full justify-evenly items-center p-5 sm:p-10'>
+            <div className='flex flex-col sm:flex-row shadow-all-sides rounded-md w-full justify-evenly items-center p-5 sm:p-10'>
                
                 <form onSubmit={handleChangePassword} className='flex w-full sm:w-1/2 flex-col gap-y-11'>
                     <div className='flex flex-col'>

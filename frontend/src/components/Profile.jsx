@@ -13,7 +13,7 @@ const Profile = () => {
         <div className='w-full h-full' >
             <SubHeading subHeading={"Your Profile"} />
             <MetaData title="Profile"/>
-            <div className='flex flex-col sm:flex-row shadow-all-sides w-full justify-evenly items-center p-5 sm:p-10'>
+            <div className='flex flex-col sm:flex-row shadow-all-sides rounded-md w-full justify-evenly items-center p-5 sm:p-10'>
                 <img src={user.avatar.url} className=' rounded-full w-1/4 h-1/3' />
                 <form className='flex w-full sm:w-1/2 flex-col gap-y-11'>
                     <div className='flex flex-col'>
