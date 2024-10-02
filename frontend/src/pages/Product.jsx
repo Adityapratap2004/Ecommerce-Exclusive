@@ -5,7 +5,7 @@ import SubHeading from '@/components/SubHeading'
 import { Button } from '@/components/ui/button';
 import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from '@/components/ui/pagination';
 import { Slider } from '@/components/ui/slider';
-import useThrottle from '@/hooks/useThrottle';
+import useDebounce from '@/hooks/useDebounce';
 import MetaData from '@/Layout/MetaData';
 import { clearErrorOfProducts, fetchProducts } from '@/store/Slice/productSlice';
 import React, { useEffect, useState } from 'react'
@@ -31,10 +31,12 @@ const Product = () => {
     setPrice(value)
   }
  
-  // Throttled fetchProducts function
-  const throttledFetchProducts = useThrottle(() => {
+  //debounced fetchProducts function
+  const dobuncedFetchProducts = useDebounce(() => {
     dispatch(fetchProducts({ keyword, currentPage, rating, category, price }));
-  }, 2000);
+  }, 1000);
+
+  
 
 
 
@@ -48,7 +50,7 @@ const Product = () => {
   useEffect(() => {
     if (price[0] != 0 || price[1] != 25000) {
       keyword.get('keyword') ? setSubHeading(`Showing search result for ${keyword.get('keyword')}`) : setSubHeading('Products')
-      throttledFetchProducts();
+      dobuncedFetchProducts();
     }
 
   }, [price])
